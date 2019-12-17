@@ -1,15 +1,39 @@
 version: v1.0
-name: Android
+name: Semaphore iOS Swift example with Fastlane
 agent:
   machine:
-    type: e1-standard-2
-    os_image: ubuntu1804
+    type: a1-standard-4
+    os_image: macos-mojave-xcode11
 blocks:
-  - name: Gradle
+  - name: Run tests
     task:
+      env_vars:
+        - name: LANG
+          value: en_US.UTF-8
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+          - bundle install --path vendor/bundle
+          - cache store
       jobs:
-        - name: Build
+        - name: Fastlane test
           commands:
-            - checkout
-            - sem-version java 1.8
-            - ./gradlew build
+            - bundle exec xcversion select 10.2.1
+            - bundle exec fastlane test
+  - name: Build app
+    task:
+      env_vars:
+        - name: LANG
+          value: en_US.UTF-8
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+          - bundle install --path vendor/bundle
+          - cache store
+      jobs:
+        - name: Fastlane build
+          commands:
+            - bundle exec xcversion select 10.2.1
+            - bundle exec fastlane build
