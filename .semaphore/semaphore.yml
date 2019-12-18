@@ -17,6 +17,7 @@ blocks:
           - cache store
       jobs:
         - name: Fastlane test
+          commands: []
   - name: Build app
     task:
       env_vars:
@@ -29,3 +30,4 @@ blocks:
           - cache store
       jobs:
         - name: Fastlane build
+          commands: []
