@@ -41,8 +41,8 @@ blocks:
             - >-
               react-native bundle --platform android --dev false --entry-file
               index.js --bundle-output
-              android/app/src/main/assets/index.android.bundle --assets-dest
-              android/app/src/main/res
+              /root/apps/android/app/src/main/assets/index.android.bundle
+              --assets-dest /root/apps/android/app/src/main/res
             - cd /root/apps/android/app/
             - ls
             - cd /root/apps/android/app/outputs/apk/release
