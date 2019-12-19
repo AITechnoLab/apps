@@ -31,22 +31,12 @@ blocks:
             echo no | avdmanager create avd -n Nexus_S_API_24 -k
             "system-images;android-24;default;armeabi-v7a" --device "Nexus S"
       jobs:
-        - name: e2e tests
+        - name: Install dependencies for detox.js
           commands:
+            - npm install -g detox
             - cache restore
-            - npm install -g react-native-cli
-            - cd /root/apps/android
-            - ./gradlew clean
-            - cd /root/apps
-            - >-
-              react-native bundle --platform android --dev false --entry-file
-              index.js --bundle-output
-              /root/apps/android/app/src/main/assets/index.android.bundle
-              --assets-dest /root/apps/android/app/src/main/res
-            - cd /root/apps/android/app/
-            - ls
-            - cd /root/apps/android/app/outputs/apk/release
-            - ls
+            - npm run detox-android-build-release
+            - npm run detox-android-test-release
             - >-
               artifact push workflow
               android/app/build/outputs/apk/release/app-release.apk
