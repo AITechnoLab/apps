@@ -44,7 +44,6 @@ blocks:
         - name: unit and integration tests
           commands:
             - cache restore
-            - npm test
         - name: e2e tests
           commands:
             - brew tap wix/brew
@@ -75,7 +74,6 @@ blocks:
         - name: unit and integration tests
           commands:
             - cache restore
-            - npm test
         - name: e2e tests
           commands:
             - cache restore
