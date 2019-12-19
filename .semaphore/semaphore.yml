@@ -77,8 +77,8 @@ blocks:
         - name: e2e tests
           commands:
             - cache restore
-            - $pwd = pwd
-            - cd $pwd/android
+            - pwd
+            - cd android
             - gradlew clean
             - cd $pwd
             - >-
