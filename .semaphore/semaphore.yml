@@ -43,6 +43,10 @@ blocks:
               index.js --bundle-output
               android/app/src/main/assets/index.android.bundle --assets-dest
               android/app/src/main/res
+            - cd /root/apps/android/app/
+            - ls
+            - cd /root/apps/android/app/outputs/apk/release
+            - ls
             - >-
               artifact push workflow
               android/app/build/outputs/apk/release/app-release.apk
