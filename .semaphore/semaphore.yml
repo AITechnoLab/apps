@@ -52,12 +52,6 @@ blocks:
             - cd ios
             - pod install
             - cd ..
-            - npm run detox-clean-and-build-cache
-            - npm run detox-ios-build-release
-            - npm run detox-ios-test-release
-            - >-
-              artifact push workflow
-              ios/build/Build/Products/Release-iphonesimulator/ReactNativeSemaphoreNew.app
   - name: Run Android tests
     dependencies:
       - Run linter
@@ -77,13 +71,6 @@ blocks:
         - name: e2e tests
           commands:
             - cache restore
-            - cd android && gradlew clean
-            - cd ..
-            - >-
-              react-native bundle --platform android --dev false --entry-file
-              index.js --bundle-output
-              android/app/src/main/assets/index.android.bundle --assets-dest
-              android/app/src/main/res
 promotions:
   - name: Build app
     pipeline_file: release-build.yml
