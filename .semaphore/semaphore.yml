@@ -15,8 +15,6 @@ blocks:
         - name: npm install and cache
           commands:
             - checkout
-            - ls
-            - pwd
             - cache restore
             - npm install
             - cache store
@@ -33,7 +31,7 @@ blocks:
             - cache restore
   - name: Run iOS tests
     dependencies:
-      - Run linter
+      - Run Android tests
     task:
       agent:
         machine:
@@ -79,10 +77,8 @@ blocks:
         - name: e2e tests
           commands:
             - cache restore
-            - pwd
-            - cd android
+            - cd /root/apps/android
             - gradlew clean
-            - cd $pwd
             - >-
               react-native bundle --platform android --dev false --entry-file
               index.js --bundle-output
