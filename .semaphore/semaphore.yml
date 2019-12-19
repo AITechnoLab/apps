@@ -17,6 +17,7 @@ blocks:
             - checkout
             - cache restore
             - npm install
+            - npm install -g react-native-cli
             - cache store
   - name: Run iOS tests
     dependencies:
