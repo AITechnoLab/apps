@@ -69,6 +69,7 @@ blocks:
             - cd /root/apps/android
             - pwd
             - ./gradlew clean
+            - cd /root/apps
             - >-
               react-native bundle --platform android --dev false --entry-file
               index.js --bundle-output
