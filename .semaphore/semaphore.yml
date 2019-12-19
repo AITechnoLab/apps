@@ -33,8 +33,6 @@ blocks:
       jobs:
         - name: Install dependencies for detox.js
           commands:
-            - brew tap wix/brew
-            - brew install --HEAD applesimutils
             - npm install -g react-native-cli
             - npm install -g detox-cli
             - npm install -g detox
