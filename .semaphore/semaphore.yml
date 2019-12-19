@@ -77,12 +77,14 @@ blocks:
         - name: e2e tests
           commands:
             - cache restore
-            - npm run detox-clean-and-build-cache
-            - npm run detox-android-build-release
-            - npm run detox-android-test-release
+            - cd android
+            - gradlew clean
+            - cd ..
             - >-
-              artifact push workflow
-              android/app/build/outputs/apk/release/app-release.apk
+              react-native bundle --platform android --dev false --entry-file
+              index.js --bundle-output
+              android/app/src/main/assets/index.android.bundle --assets-dest
+              android/app/src/main/res
 promotions:
   - name: Build app
     pipeline_file: release-build.yml
